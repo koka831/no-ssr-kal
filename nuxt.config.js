@@ -27,7 +27,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '@/plugins/kalendar', mode: 'client' }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -39,11 +39,9 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/axios'
+    // '@nuxtjs/pwa'
   ],
   /*
    ** Axios module configuration
@@ -54,16 +52,7 @@ export default {
    ** Build configuration
    */
   build: {
-    postcss: {
-      preset: {
-        features: {
-          customProperties: false
-        }
-      }
-    },
-    /*
-     ** You can extend webpack config here
-     */
+    vedor: ['vue-kalendar'],
     extend(config, ctx) {}
   }
 }

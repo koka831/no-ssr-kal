@@ -1,68 +1,44 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        kalendar-ise
-      </h1>
-      <h2 class="subtitle">
-        My stupendous Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <kalendar
+    :configuration="config"
+    :appointments="appointments"
+    :existing_appointments="appointments"
+  />
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import consola from 'consola'
 
 export default {
-  components: {
-    Logo
+  data() {
+    return {
+      config: {
+        view_type: 'week',
+        cell_height: 20,
+        scrollToNow: true,
+        military_time: true,
+        read_only: true,
+        day_starts_at: 0,
+        day_ends_at: 24,
+        overlap: true,
+        past_event_creation: true
+      },
+      appointments: [
+        {
+          from: '2019-10-27T17:00:00.900Z',
+          to: '2019-10-27T19:00:00.900Z',
+          data: {
+            title: 'sample event',
+            description: 'sample description'
+          }
+        }
+      ],
+      new_appointment: {}
+    }
+  },
+  mounted() {
+    consola.log(this.$kalendar)
+    /* this.appointments.push(this.appointments[0]) */
   }
 }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
